@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Виселица</title>
+  <link rel="stylesheet" href="Igruxa.css" />
+</head>
+<body>
+  <!-- Стартовый экран -->
+  <div id="start-screen" class="screen">
+    <h1>Виселица</h1>
+    <div id="stats">
+      <div id="wins-counter">Побед: 0</div>
+      <div id="best-time">Рекорд: —</div>
+    </div>
+    <div>
+    <p>Выберите категорию:</p>
+    <div id="category-buttons"></div>
+  </div>
+     <button class="btn-back" style="margin-top: 20px;" onclick="window.location.href='index.html'">
+              ← Назад на сайт
+     </button>
+  </div>
+
+  <!-- Игровой экран -->
+  <div id="game-screen" class="screen hidden">
+    <h1>Виселица</h1>
+    <div id="timer">Время: 60</div>
+    <div id="hangman-svg">
+      <svg width="140" height="180" viewBox="0 0 200 250"> <!-- ⬇️ Изменено здесь -->
+        <line x1="40" y1="240" x2="160" y2="240" stroke="black" stroke-width="4" />
+        <line x1="100" y1="240" x2="100" y2="40" stroke="black" stroke-width="4" />
+        <line x1="100" y1="40" x2="160" y2="40" stroke="black" stroke-width="4" />
+        <line x1="160" y1="40" x2="160" y2="60" stroke="black" stroke-width="4" />
+
+        <circle id="head" cx="160" cy="75" r="15" stroke="black" stroke-width="3" fill="none" />
+        <line id="body" x1="160" y1="90" x2="160" y2="150" stroke="black" stroke-width="3" />
+        <line id="left-arm" x1="160" y1="110" x2="140" y2="100" stroke="black" stroke-width="3" />
+        <line id="right-arm" x1="160" y1="110" x2="180" y2="100" stroke="black" stroke-width="3" />
+        <line id="left-leg" x1="160" y1="150" x2="140" y2="180" stroke="black" stroke-width="3" />
+        <line id="right-leg" x1="160" y1="150" x2="180" y2="180" stroke="black" stroke-width="3" />
+      </svg>
+    </div>
+
+    <div id="word">_ _ _ _</div>
+    <div id="attempts">Осталось попыток: 6</div>
+    <div id="letters"></div>
+    <button id="back-to-categories">← Назад к категориям</button>
+  
+  </div>
+
+  <!-- Экран победы -->
+  <div id="win-screen" class="end-screen">
+    <h2>🎉 ПОБЕДА!</h2>
+    <p>Слово: <span id="win-word"></span></p>
+    <p>Угадано за: <span id="win-time"></span> сек</p>
+    <button class="end-restart-btn">Играть снова</button>
+      <button class="btn" style="margin-top: 20px;" onclick="window.location.href='index.html'">
+  ← Назад на сайт
+</button>
+    <div id="confetti-container"></div>
+  </div>
+
+  <!-- Экран поражения -->
+  <div id="lose-screen" class="end-screen">
+    <h2>💀 ПОРАЖЕНИЕ!</h2>
+    <p>Слово: <span id="lose-word"></span></p>
+    <button class="end-restart-btn">Попробовать снова</button>
+          <button class="btn" style="margin-top: 20px;" onclick="window.location.href='index.html'">
+  ← Назад на сайт
+</button>
+  </div>
+
+  <script src="Igruxa.js"></script>
+</body>
+</html>

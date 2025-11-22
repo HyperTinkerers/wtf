@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WTF Site</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <div class="container">
+    <h1>Сайт работает:)</h1>
+
+    <div class="message wiki">но только для Вики</div>
+    <div class="message not-for-you" style="display:none">А для Тимура — сайт не работает!</div>
+
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Введи своё имя..." autocomplete="off">
+      <button id="login-btn" class="btn login">Войти</button>
+      <div id="login-error" class="hidden"></div>
+    </div>
+
+    <div class="buttons">
+      <button class="btn left" id="dont-click">Не нажимай</button>
+      <button class="btn center" id="break-site">Сломать сайт</button>
+      <button class="btn right" id="can-click">Так уж и быть, можешь нажать</button>
+    </div>
+
+    <div class="buttons">
+      <button class="btn center" id="hangman-btn">Виселица</button>
+    </div>
+  </div>
+
+  <!-- Экран поломки -->
+  <div id="broken-screen" class="hidden">
+    <div id="error-message">ERROR!!!</div>
+    <div id="repair-instruction">
+      Чтобы починить сайт — введи пароль:<br>
+      <input type="password" id="repair-password" placeholder="Секретное слово...">
+    </div>
+  </div>
+
+  <script src="Logika.js?v=3"></script>
+</body>
+</html>

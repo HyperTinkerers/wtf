@@ -1,0 +1,278 @@
+/* Общие стили */
+body {
+  background: #0f0f0f;
+  color: #00ff41;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #00ff41;
+}
+
+.message {
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
+
+.wiki {
+  color: #00ff41;
+}
+
+.not-for-you {
+  color: #ff5555;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+/* Поле ввода и кнопка "Войти" */
+.input-group {
+  margin: 30px 0;
+}
+
+#username {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #222;
+  color: #00ff41;
+  border: 2px solid #00ff41;
+  border-radius: 25px;
+  outline: none;
+}
+
+#username.shake {
+  animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-color: #ff5555;
+  box-shadow: 0 0 12px rgba(255, 85, 85, 0.7);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.login {
+  background: #444;
+  color: #00ff41;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login:hover {
+  background: #555;
+}
+
+/* Кнопки */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex: 1;
+}
+
+.btn:hover:not(.disabled) {
+  transform: scale(1.05);
+}
+
+.left { background: #a5a5a5; color: black; }
+.center { background: #ff5555; color: white; }
+.right { background: #00ff41; color: black; }
+
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Сообщения под кнопкой "Войти" */
+#login-error {
+  color: #ff5555;
+  font-size: 1.1rem;
+  margin-top: 12px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-family: 'Courier New', monospace;
+}
+
+#login-error.show {
+  opacity: 1;
+}
+
+/* Экран поломки */
+#broken-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  color: white;
+  pointer-events: auto;
+}
+
+/* Только для ERROR!!! — огромный текст */
+#error-message {
+  font-size: clamp(3.5rem, 22vw, 7rem);
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+  animation: error-blink 0.8s infinite;
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+@keyframes error-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Инструкция и поле ввода на экране поломки */
+#repair-instruction {
+  font-size: clamp(1.2rem, 6vw, 2rem);
+  text-align: center;
+  margin-top: 30px;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+#repair-password {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  background: #222;
+  color: #0f0;
+  border: 2px solid #0f0;
+  border-radius: 12px;
+  outline: none;
+  width: 80%;
+  max-width: 300px;
+}
+
+/* Фон двоичного кода — крупные строки */
+#broken-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 65, 0.3),
+      rgba(0, 255, 65, 0.3) 2px,   /* ← толще линии */
+      transparent 2px,
+      transparent 4px               /* ← больше промежуток между строками */
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 65, 0.15),
+      rgba(0, 255, 65, 0.15) 20px,
+      transparent 20px,
+      transparent 20.5px
+    );
+  background-size: 100% 4px, 20px 100%; /* ← ширина строки = 4px */
+  animation: binaryScrollLines 15s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes binaryScrollLines {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 100%, 0 0;
+  }
+}
+
+/* Радуга для Вики */
+body.rainbow-mode {
+  animation: full-rainbow-background 2s forwards;
+}
+
+body.rainbow-mode h1,
+body.rainbow-mode .message,
+body.rainbow-mode .btn,
+body.rainbow-mode #username,
+body.rainbow-mode #login-btn {
+  animation: full-rainbow-text 2s forwards;
+  text-shadow: 0 0 8px currentColor;
+}
+
+@keyframes full-rainbow-background {
+  0%   { background-color: #0f0f0f; }
+  14%  { background-color: #ff0000; }
+  28%  { background-color: #ff8000; }
+  42%  { background-color: #ffff00; }
+  57%  { background-color: #00ff00; }
+  71%  { background-color: #0080ff; }
+  85%  { background-color: #8000ff; }
+  100% { background-color: #ff00ff; }
+}
+
+@keyframes full-rainbow-text {
+  0%   { color: #00ff41; }
+  14%  { color: #ff0000; }
+  28%  { color: #ff8000; }
+  42%  { color: #ffff00; }
+  57%  { color: #00ff00; }
+  71%  { color: #0080ff; }
+  85%  { color: #8000ff; }
+  100% { color: #ff00ff; }
+}
+
+/* Скрытие элементов */
+.hidden {
+  display: none !important;
+}
