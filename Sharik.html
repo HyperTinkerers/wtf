@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Поймай шарик</title>
+  <!-- Весёлый шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Sharik.css" />
+</head>
+<body>
+  <!-- Стартовый экран -->
+  <div id="start-screen">
+    <h1>ПОЙМАЙ ШАРИК!</h1>
+    <p>Выбери уровень и лови как можно больше!</p>
+    <div id="difficulty-buttons">
+      <button class="diff-btn easy" data-level="easy">🟢 Лёгкий</button>
+      <button class="diff-btn medium" data-level="medium">🟡 Средний</button>
+      <button class="diff-btn hard" data-level="hard">🔴 Сложный</button>
+    </div>
+    <div id="global-record">🏆 Лучший счёт: <span id="global-record-value">—</span></div>
+  </div>
+
+  <!-- Игровой экран -->
+  <div id="game-screen" class="hidden">
+    <div id="score">Счёт: 0</div>
+    <div id="time">Время: 30</div>
+    <div id="ball"></div>
+  </div>
+
+  <!-- Экран окончания -->
+  <div id="end-screen" class="hidden">
+    <h2>⏱️ Время вышло!</h2>
+    <p>Ваш счёт: <span id="final-score">0</span></p>
+    <p>Рекорд: <span id="record-score">0</span></p>
+    <button id="restart-btn">Играть снова</button>
+    <button id="back-to-menu">← В меню</button>
+  </div>
+
+  <!-- Контейнер для анимаций клика -->
+  <div id="click-effects"></div>
+
+  <script src="Sharik.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  touch-action: manipulation;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  transition: background 0.5s ease;
+}
+
+/* Фоны под уровни */
+body.easy-bg { background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); }
+body.medium-bg { background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%); }
+body.hard-bg { background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); }
+
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+}
+
+#start-screen p {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+  line-height: 1.4;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+#difficulty-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  max-width: 520px;
+  margin-bottom: 30px;
+}
+
+.diff-btn {
+  padding: 16px 26px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  width: 180px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.diff-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.diff-btn:hover::after {
+  opacity: 1;
+}
+
+.diff-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.diff-btn.easy { background: #4a90e2; }
+.diff-btn.medium { background: #28a745; }
+.diff-btn.hard { background: #dc3545; }
+
+#global-record {
+  font-size: 1.3rem;
+  background: rgba(0,0,0,0.2);
+  padding: 10px 24px;
+  border-radius: 30px;
+  backdrop-filter: blur(4px);
+  font-weight: 600;
+}
+
+#global-record-value {
+  color: #ffeb3b;
+  font-weight: 700;
+}
+
+/* Игровой экран */
+#game-screen {
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+#score, #time {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 12px 0;
+  padding: 10px 24px;
+  border-radius: 24px;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  letter-spacing: 0.5px;
+}
+
+#score {
+  color: #aaffaa;
+  text-shadow: 0 0 8px rgba(173, 255, 47, 0.7);
+}
+
+#time {
+  color: #ff9999;
+  text-shadow: 0 0 8px rgba(255, 102, 102, 0.7);
+}
+
+#time.warning {
+  animation: blinkRed 0.7s infinite;
+}
+
+@keyframes blinkRed {
+  0%, 100% { opacity: 1; text-shadow: 0 0 12px rgba(255, 50, 50, 0.9); }
+  50% { opacity: 0.6; text-shadow: 0 0 4px rgba(255, 50, 50, 0.5); }
+}
+
+/* Шарик — теперь с неоновым свечением! */
+#ball {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+}
+
+#ball:active {
+  transform: scale(0.85);
+}
+
+/* Экран окончания */
+#end-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 100;
+}
+
+#end-screen h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px rgba(255,204,0,0.6);
+}
+
+#end-screen p {
+  font-size: 1.7rem;
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+#end-screen button {
+  margin-top: 20px;
+  padding: 14px 32px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#restart-btn {
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  color: #000;
+  box-shadow: 0 6px 20px rgba(0,201,255,0.4);
+}
+
+#restart-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,201,255,0.6);
+}
+
+#back-to-menu {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  margin-top: 12px;
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+}
+
+#back-to-menu:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(106, 17, 203, 0.6);
+}
+
+/* Эффекты клика */
+#click-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.click-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: clickBurst 0.7s forwards;
+}
+
+@keyframes clickBurst {
+  to {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 480px) {
+  h1 { font-size: 2.1rem; }
+  #start-screen p { font-size: 1.25rem; }
+  .diff-btn {
+    font-size: 1.25rem;
+    padding: 14px;
+    width: 160px;
+  }
+  #score, #time { font-size: 1.5rem; padding: 8px 20px; }
+  #end-screen h2 { font-size: 2rem; }
+  #end-screen p { font-size: 1.4rem; }
+  #end-screen button {
+    font-size: 1.3rem;
+    padding: 12px 28px;
+  }
+}
