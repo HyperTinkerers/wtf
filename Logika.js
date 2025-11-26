@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const breakSiteBtn = document.getElementById('break-site');
   const canClickBtn = document.getElementById('can-click');
   const hangmanBtn = document.getElementById('hangman-btn');
+  const krestiki-nolikiBtn = document.getElementById('krestiki-nolikiBtn');
   const notForYouMsg = document.querySelector('.not-for-you');
   const brokenScreen = document.getElementById('broken-screen');
   const repairPasswordInput = document.getElementById('repair-password');
@@ -191,6 +192,12 @@ document.addEventListener('DOMContentLoaded', function () {
   if (hangmanBtn) {
     hangmanBtn.addEventListener('click', () => {
       window.location.href = 'Igruxa.html';
+    });
+  }
+  //кнопка крестики нолики
+  if (krestiki-nolikiBtn) {
+    krestiki-nolikiBtn.addEventListener ('click', () =>{
+      window.location.href ='Krestiki.html';
     });
   }
 
