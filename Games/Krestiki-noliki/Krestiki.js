@@ -113,7 +113,7 @@ function endGame(winner) {
     winsX++;
     localStorage.setItem("tictactoe_wins_x", winsX);
   } else if (winner === "O") {
-    statusEl.textContent = "💀 ИИ победил!";
+    statusEl.textContent = "💀 Ты лох!";
     winsO++;
     localStorage.setItem("tictactoe_wins_o", winsO);
   } else {

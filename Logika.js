@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const breakSiteBtn = document.getElementById('break-site');
   const canClickBtn = document.getElementById('can-click');
   const hangmanBtn = document.getElementById('hangman-btn');
-  const krestiki-nolikiBtn = document.getElementById('krestiki-nolikiBtn');
+  const krestikiNolikiBtn = document.getElementById('krestiki-noliki');
+  const findBallBtn = document.getElementById('find-ball'); // ← новая кнопка
   const notForYouMsg = document.querySelector('.not-for-you');
   const brokenScreen = document.getElementById('broken-screen');
   const repairPasswordInput = document.getElementById('repair-password');
@@ -191,13 +192,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // Кнопка "Виселица"
   if (hangmanBtn) {
     hangmanBtn.addEventListener('click', () => {
-      window.location.href = 'Igruxa.html';
+      window.location.href = 'games/Hangman/Igruha.html';
     });
   }
-  //кнопка крестики нолики
-  if (krestiki-nolikiBtn) {
-    krestiki-nolikiBtn.addEventListener ('click', () =>{
-      window.location.href ='Krestiki.html';
+
+  // Кнопка "Крестики-нолики"
+  if (krestikiNolikiBtn) {
+    krestikiNolikiBtn.addEventListener('click', () => {
+      window.location.href = 'games/krestiki-noliki/Krestiki.html';
+    });
+  }
+
+  // Кнопка "Найди шарик"
+  if (findBallBtn) {
+    findBallBtn.addEventListener('click', () => {
+      window.location.href = 'games/find-ball/Sharik.html';
     });
   }
 
